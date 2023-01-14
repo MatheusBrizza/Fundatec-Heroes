@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="toast_message">toast</string>
+    <string name="e_mail">e_mail</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
 </resources>
