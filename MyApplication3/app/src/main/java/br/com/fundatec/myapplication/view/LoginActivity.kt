@@ -4,11 +4,10 @@ package br.com.fundatec.myapplication.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.constraintlayout.widget.ConstraintLayout
-import br.com.fundatec.myapplication.HomeActivity
+import br.com.fundatec.myapplication.home.view.HomeActivity
 import br.com.fundatec.myapplication.R
 import br.com.fundatec.myapplication.databinding.ActivityLoginBinding
 import br.com.fundatec.myapplication.presentation.LoginViewModel
