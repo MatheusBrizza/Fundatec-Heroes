@@ -12,10 +12,14 @@ class LoginViewModel :ViewModel() {
         if (email.isNullOrEmpty() && password.isNullOrEmpty()) {
             state.value = ViewState.ShowError
         }
+        else {
+         state.value = ViewState.ShowHome
+        }
     }
 }
 
 sealed class ViewState {
+    object ShowHome : ViewState()
     object ShowError : ViewState()
     object ShowErrorEmail : ViewState()
     object ShowErrorPassword : ViewState()

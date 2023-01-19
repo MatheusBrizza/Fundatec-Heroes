@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
         configLoginButton()
         viewModel.viewState.observe(this) { state ->
             when (state) {
+                is ViewState.ShowHome -> showHome()
                 is ViewState.ShowError -> showSnack()
                 is ViewState.ShowErrorEmail -> {}
                 is ViewState.ShowErrorPassword -> {}
@@ -63,9 +64,13 @@ class LoginActivity : AppCompatActivity() {
         Snackbar
             .make(container, "Nosso snackbar", Snackbar.LENGTH_LONG)
             .setAction("OK") {
-                val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                startActivity(intent)
+                showHome()
             }
             .show()
+    }
+
+    private fun showHome() {
+        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+        startActivity(intent)
     }
 }
