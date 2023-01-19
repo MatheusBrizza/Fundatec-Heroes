@@ -18,9 +18,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val adapter = ViewPagerAdapter(supportFragmentManager)
-        binding.vpHome.adapter = adapter
-        binding.tlHome.setDis
+
 
         configActionBar()
     /*    val image = findViewById<ImageView>(R.id.iv_home)
@@ -37,10 +35,14 @@ class HomeActivity : AppCompatActivity() {
             .into(image)
     */}
 
-    private fun configActionBar(){
-        setSupportActionBar(binding.tbNavigation)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    private fun configTab() {
+        val adapter = ViewPagerAdapter(supportFragmentManager)
     }
+
+    private fun configActionBar(){
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        binding.vpHome.adapter = adapter
+        binding.tlHome.setupWithViewPager(binding.vpHome)    }
 }
 
 class ViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
