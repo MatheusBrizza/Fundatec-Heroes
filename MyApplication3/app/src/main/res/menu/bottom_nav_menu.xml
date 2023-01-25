@@ -22,4 +22,9 @@
         android:icon="@drawable/grade_center_svgrepo_com"
         android:title="Search"/>
 
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/student_management_avatar_people_svgrepo_com"
+        android:title="Profile"/>
+
 </menu>
