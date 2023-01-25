@@ -1,4 +1,4 @@
-package br.com.fundatec.myapplication.presentation
+package br.com.fundatec.myapplication.login.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

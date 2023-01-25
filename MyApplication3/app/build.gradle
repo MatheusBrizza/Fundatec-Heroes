@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+x    kapt("com.android.databiding:compiler:3.1.4")
 
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'

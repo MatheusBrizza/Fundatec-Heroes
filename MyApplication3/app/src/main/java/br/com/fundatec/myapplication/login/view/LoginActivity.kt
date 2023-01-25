@@ -1,4 +1,4 @@
-package br.com.fundatec.myapplication.view
+package br.com.fundatec.myapplication.login.view
 
 
 import android.content.Intent
@@ -10,8 +10,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import br.com.fundatec.myapplication.home.view.HomeActivity
 import br.com.fundatec.myapplication.R
 import br.com.fundatec.myapplication.databinding.ActivityLoginBinding
-import br.com.fundatec.myapplication.presentation.LoginViewModel
-import br.com.fundatec.myapplication.presentation.ViewState
+import br.com.fundatec.myapplication.login.presentation.LoginViewModel
+import br.com.fundatec.myapplication.login.presentation.ViewState
 import com.google.android.material.snackbar.Snackbar
 
 class LoginActivity : AppCompatActivity() {

@@ -11,4 +11,15 @@
         android:id="@+id/navigation_notification"
         android:icon="@drawable/round_bell_svgrepo_com"
         android:title="Notificação"/>
+
+    <item
+        android:id="@+id/navigation_stats"
+        android:icon="@drawable/grade_center_svgrepo_com"
+        android:title="Stats"/>
+
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/grade_center_svgrepo_com"
+        android:title="Search"/>
+
 </menu>
