@@ -8,6 +8,14 @@
         android:layout_height="match_parent"
         tools:context=".HomeActivity">
 
+        <Button
+            android:id="@+id/btn_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/adicionar_personagem"
+            />
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/tb_navigation"
             android:layout_width="match_parent"
@@ -19,19 +27,20 @@
             app:title="Home"
             app:titleTextColor="@color/white"/>
 
+
+
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tl_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabTextColor="@android:color/holo_red_light"
+            app:tabTextColor="@android:color/darker_gray"
             app:layout_constraintTop_toBottomOf="@+id/tb_navigation"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_home"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@android:color/holo_red_light"
-            app:layout_constraintBottom_toBottomOf="@+id/tl_home"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tb_navigation"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

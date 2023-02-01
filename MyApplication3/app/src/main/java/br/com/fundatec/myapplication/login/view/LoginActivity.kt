@@ -13,9 +13,22 @@ import br.com.fundatec.myapplication.databinding.ActivityLoginBinding
 import br.com.fundatec.myapplication.login.presentation.LoginViewModel
 import br.com.fundatec.myapplication.login.presentation.ViewState
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import br.com.fundatec.myapplication.character.view.Character
 
 class LoginActivity : AppCompatActivity() {
 
+    private val moshi by lazy {
+        Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+    }
+
+    /*private val character by lazy {
+        Character("Batata", "asd")
+    }
+*/
     private lateinit var binding: ActivityLoginBinding
 
     private val viewModel: LoginViewModel by viewModels()
@@ -26,6 +39,11 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+/*
+        val preferences = getSharedPreferences("bd", MODE_PRIVATE)
+        val characterString = moshi.adapter(Character::class.java).toJson(character)
+        preferences.edit().putString("character", characterString).commit()
+*/
         binding.etEmail.error = "Campo obrigatório"
 
         configLoginButton()

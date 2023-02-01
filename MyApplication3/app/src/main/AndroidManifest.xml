@@ -15,6 +15,9 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".character.view.NewCharacterActivity"
+            android:exported="false" />
+        <activity
             android:name=".BottomNavigationActivity"
             android:exported="false" />
         <activity

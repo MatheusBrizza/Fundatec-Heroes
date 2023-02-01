@@ -20,7 +20,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         configTab()
-        configActionBar()
+        configHomeButton()
     }
     /*    val image = findViewById<ImageView>(R.id.iv_home)
 
@@ -42,9 +42,9 @@ class HomeActivity : AppCompatActivity() {
         binding.tlHome.setupWithViewPager(binding.vpHome)
     }
 
-    private fun configActionBar() {
-        setSupportActionBar(binding.tbNavigation)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    private fun configHomeButton() {
+        binding.btnHome.setOnClickListener {  }
+
     }
 }
 
