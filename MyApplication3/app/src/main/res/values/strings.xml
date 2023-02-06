@@ -13,4 +13,12 @@
     <string name="search" />
     <string name="stats" />
     <string name="adicionar_personagem">Adicionar personagem</string>
+    <string-array name="marca">
+        <item>DC</item>
+        <item>Marvel</item>
+    </string-array>
+    <string-array name="heroi_vilao">
+        <item>Herói</item>
+        <item>Vilão</item>
+    </string-array>
 </resources>
