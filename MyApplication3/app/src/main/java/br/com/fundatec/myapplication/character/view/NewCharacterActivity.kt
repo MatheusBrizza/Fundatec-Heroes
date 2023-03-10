@@ -1,8 +1,6 @@
 package br.com.fundatec.myapplication.character.view
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.activity.viewModels
@@ -10,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import br.com.fundatec.myapplication.R
 import br.com.fundatec.myapplication.databinding.ActivityNewCharacterBinding
-import br.com.fundatec.myapplication.home.view.HomeActivity
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -42,7 +39,6 @@ class NewCharacterActivity : AppCompatActivity() {
                 is ViewState.ShowCharacter -> showCharacter()
                 is ViewState.ShowError -> showSnack()
             }
-
         }
 
     }
@@ -55,9 +51,7 @@ class NewCharacterActivity : AppCompatActivity() {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             view.adapter = adapter
-
         }
-
     }
 
     private fun configCharacterButton() {

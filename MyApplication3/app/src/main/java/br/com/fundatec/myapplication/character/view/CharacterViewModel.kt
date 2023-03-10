@@ -16,6 +16,7 @@ class CharacterViewModel : ViewModel() {
         }
         else {
             state.value = ViewState.ShowCharacter
+            //TODO: shared preferences vai aqui
         }
     }
 }

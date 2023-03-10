@@ -8,40 +8,50 @@
         android:layout_height="match_parent"
         tools:context=".HomeActivity">
 
-        <Button
-            android:id="@+id/btn_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="@string/adicionar_personagem"
-            />
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/tb_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:elevation="8dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:navigationIcon="@mipmap/ic_launcher"
-            app:title="Home"
-            app:titleTextColor="@color/white"/>
+            app:navigationIcon="@drawable/icones"
+            app:title="Meus heróis">
 
-
+            <ImageButton
+                android:id="@+id/btn_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/white"
+                android:src="@drawable/plus_alt_svgrepo_com"
+                app:layout_constraintTop_toBottomOf="@id/tl_home" />
+        </com.google.android.material.appbar.MaterialToolbar>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tl_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabTextColor="@android:color/darker_gray"
-            app:layout_constraintTop_toBottomOf="@+id/tb_navigation"/>
+            app:layout_constraintTop_toBottomOf="@id/tb_navigation"
+            app:tabTextColor="@android:color/darker_gray" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_home"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tb_navigation"/>
+            app:layout_constraintTop_toBottomOf="@+id/tl_home"
+            tools:layout_editor_absoluteX="16dp" />
+
+
+        <!--
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:listitem="@" />
+        -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -51,10 +51,6 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this@HomeActivity, NewCharacterActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
     }
 }
 
