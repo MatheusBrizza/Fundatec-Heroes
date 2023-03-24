@@ -13,6 +13,7 @@
     <string name="search" />
     <string name="stats" />
     <string name="adicionar_personagem">Adicionar personagem</string>
+    <string name="nome_anime">nome anime</string>
     <string-array name="marca">
         <item>DC</item>
         <item>Marvel</item>
