@@ -5,8 +5,8 @@ import android.view.View
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 
-fun Context.showToast() {
-    Toast.makeText(this, "Olá!", Toast.LENGTH_SHORT).show()
+fun Context.showToast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
 fun Context.showSnack(view: View, message: String) {
