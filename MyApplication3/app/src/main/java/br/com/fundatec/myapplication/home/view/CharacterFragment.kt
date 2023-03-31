@@ -26,7 +26,7 @@ class CharacterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.run {
-            binding.tvName.text = getString(ARG_PARAM1)
+//            binding.tvName.text = getString(ARG_PARAM1)
         }
     }
 

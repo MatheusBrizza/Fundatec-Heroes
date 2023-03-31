@@ -8,5 +8,6 @@ class ListItemViewHolder (
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(name: String) {
         binding.tvName.text = name
+        //TODO: criar objeto de character com view que vai ser a representação do que vai retornar da APi que vou salvar na tela de criar personagem
     }
 }

@@ -60,7 +60,12 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return "Tab ${position.inc()}"
+
+        return when (position) {
+            0 -> "Heroi"
+            1 -> "Vilao"
+            else -> {null}
+        }
     }
 
     override fun getItem(position: Int): Fragment {
