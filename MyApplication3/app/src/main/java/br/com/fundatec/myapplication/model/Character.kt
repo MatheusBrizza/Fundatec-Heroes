@@ -7,9 +7,11 @@ data class Character(
     val name: String,
     val url: String,
     val description: String,
-    val marvelDc: Enum,
+    val marvelDc: universeType,
+    val heroiVilao: characterType,
     val age: Int,
     val dateOfBirth: LocalDate,
 ) {
-    enum class Enum { Marvel, DC }
+    enum class universeType { Marvel, DC }
+    enum class characterType { hero, vilain}
 }
