@@ -63,10 +63,11 @@
 
 
         <TextView
+            android:id="@+id/tv_novo_usuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Novo usuário"
+            android:text="@string/novo_usu_rio"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             />
