@@ -1,29 +1,23 @@
 package br.com.fundatec.myapplication.character.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.activity.viewModels
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
+import br.com.fundatec.components.showSnack
 import br.com.fundatec.myapplication.R
 import br.com.fundatec.myapplication.databinding.ActivityNewCharacterBinding
-import com.google.android.material.snackbar.Snackbar
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import br.com.fundatec.myapplication.home.view.HomeActivity
 
 
-class NewCharacterActivity : AppCompatActivity() {
+class NewCharacterActivity : AppCompatActivity(), OnItemSelectedListener {
     private lateinit var binding: ActivityNewCharacterBinding
     private val viewModel: CharacterViewModel by viewModels()
-    private val character by lazy {
-    }
-
-    private val moshi by lazy {
-        Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,17 +27,18 @@ class NewCharacterActivity : AppCompatActivity() {
 
         configSpinner(R.array.marca, binding.spnMarvelDc)
         configSpinner(R.array.heroi_vilao, binding.spnHeroVilain)
-        configCharacterButton()
+        configSaveCharacterButton()
         viewModel.viewState.observe(this) { state ->
             when(state) {
-                is ViewState.ShowCharacter -> showCharacter()
-                is ViewState.ShowError -> showSnack()
+                is ViewState.ShowCharacter -> saveCharacter()
+                is ViewState.ShowError -> showSnack(binding.root, "erro inesperado")
             }
         }
 
     }
 
     private fun configSpinner( list: Int, view: Spinner) {
+        binding.spnHeroVilain.onItemSelectedListener = this
         ArrayAdapter.createFromResource(
             this,
             list,
@@ -54,44 +49,31 @@ class NewCharacterActivity : AppCompatActivity() {
         }
     }
 
-    private fun configCharacterButton() {
+    private fun configSaveCharacterButton() {
         binding.btnSaveCharacter.setOnClickListener {
             viewModel.validateUserInput(
                 name = binding.tietName.text.toString(),
+                url = binding.tietUrl.text.toString(),
                 description = binding.tietDescription.text.toString(),
+                heroiVilao = binding.spnHeroVilain.getSelectedItem().toString(),
+                marvelDc = binding.spnMarvelDc.getSelectedItem().toString(),
                 age = binding.tietAge.text.toString(),
-                date = binding.tietDate.text.toString(),
-                url = binding.tietUrl.text.toString()
+                date = binding.tietDate.text.toString()
             )
         }
     }
 
-    private fun showSnack() {
-        val container = findViewById<ConstraintLayout>(R.id.char_container)
-        Snackbar
-            .make(container, "Preencher todos os campos", Snackbar.LENGTH_LONG)
-            .setAction("OK") {
-                showCharacter()
-            }
-            .show()
+    private fun saveCharacter() {
+        showSnack(binding.root, "personagem salvo")
+        val intent = Intent(this@NewCharacterActivity, HomeActivity::class.java)
+        startActivity(intent)
     }
 
-    private fun showCharacter() {
-        val preferences = getSharedPreferences("bd", MODE_PRIVATE)
-        val characterString = moshi.adapter(Character::class.java)
-                                    .toJson(Character("null", "null", "null",
-                                        "null", "null", dcMarvel = Spinner(this), heroVilan = Spinner(this)))
-        preferences.edit().putString("character", characterString).commit()
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
     }
 
 }
 
-data class Character(
-    val name: String,
-    val description: String,
-    val age: String,
-    val date: String,
-    val url: String,
-    val dcMarvel: Spinner,
-    val heroVilan: Spinner,
-)

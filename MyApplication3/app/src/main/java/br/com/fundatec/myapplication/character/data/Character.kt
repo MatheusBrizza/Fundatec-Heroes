@@ -1,4 +1,4 @@
-package br.com.fundatec.myapplication.model
+package br.com.fundatec.myapplication.character.data
 
 import java.time.LocalDate
 
@@ -9,9 +9,9 @@ data class Character(
     val description: String,
     val marvelDc: universeType,
     val heroiVilao: characterType,
-    val age: Int,
-    val dateOfBirth: LocalDate,
+    val age: String,
+    val dateOfBirth: String,
 ) {
     enum class universeType { Marvel, DC }
-    enum class characterType { hero, vilain}
+    enum class characterType { heroi, vilao}
 }

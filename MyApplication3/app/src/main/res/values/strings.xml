@@ -21,7 +21,7 @@
         <item>Marvel</item>
     </string-array>
     <string-array name="heroi_vilao">
-        <item>Herói</item>
-        <item>Vilão</item>
+        <item>heroi</item>
+        <item>vilao</item>
     </string-array>
 </resources>
