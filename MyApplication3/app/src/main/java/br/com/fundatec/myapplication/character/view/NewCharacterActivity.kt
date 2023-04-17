@@ -58,7 +58,7 @@ class NewCharacterActivity : AppCompatActivity(), OnItemSelectedListener {
                 heroiVilao = binding.spnHeroVilain.getSelectedItem().toString(),
                 marvelDc = binding.spnMarvelDc.getSelectedItem().toString(),
                 age = binding.tietAge.text.toString(),
-                date = binding.tietDate.text.toString()
+                birthday = binding.tietDate.text.toString()
             )
         }
     }

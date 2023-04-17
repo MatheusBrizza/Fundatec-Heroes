@@ -21,10 +21,10 @@
             >
 
             <EditText
-                android:id="@+id/et_nome"
+                android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="nome"
+                android:hint="name"
                 android:imeOptions="actionGo"
                 android:inputType="textEmailAddress"
                 android:textSize="16sp"/>
@@ -47,7 +47,7 @@
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/e_mail"
+                android:hint="@string/email"
                 android:imeOptions="actionGo"
                 android:inputType="textEmailAddress"
                 android:textSize="16sp"/>
@@ -84,6 +84,16 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/container"
             android:text="@string/confirm"/>
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,47 +1,46 @@
 package br.com.fundatec.myapplication.character.view
 
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import br.com.fundatec.myapplication.App
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import br.com.fundatec.myapplication.character.data.Character
+import androidx.lifecycle.viewModelScope
+import br.com.fundatec.myapplication.character.domain.usecase.CharacterUsecase
+import br.com.fundatec.myapplication.profile.domain.usecase.UserUsecase
+import kotlinx.coroutines.launch
 
 class CharacterViewModel : ViewModel() {
     private val state = MutableLiveData<ViewState>()
     val viewState: LiveData<ViewState> = state
 
-    private val moshi by lazy {
-        Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
+    private val characterUseCase: CharacterUsecase by lazy {
+        CharacterUsecase()
+    }
+
+    private val userUseCase: UserUsecase by lazy {
+        UserUsecase()
     }
 
     fun validateUserInput(
-        name: String?, description: String?, heroiVilao: String?,
-        marvelDc: String?, age: String?, date: String?, url: String?
+        name: String?, description: String?, url: String?, heroiVilao: String?,
+        marvelDc: String?, age: String?, birthday: String?
     ) {
-        if (name.isNullOrEmpty() || description.isNullOrEmpty() || heroiVilao.isNullOrEmpty() ||
-            marvelDc.isNullOrEmpty() || age.isNullOrEmpty() || date.isNullOrEmpty() ||
-            url.isNullOrEmpty()
-        ) {
-            state.value = ViewState.ShowError
-        } else {
-            val character = Character(name, url, description, enumValueOf(marvelDc),
-                enumValueOf(heroiVilao), age, date)
-            val characterString = moshi.adapter(Character::class.java).toJson(character)
-            save(characterString)
-            state.value = ViewState.ShowCharacter
+        viewModelScope.launch {
+            if (name.isNullOrEmpty() || description.isNullOrEmpty() || url.isNullOrEmpty() ||
+                heroiVilao.isNullOrEmpty() || marvelDc.isNullOrEmpty() || age.isNullOrEmpty()
+            ) {
+                state.value = ViewState.ShowError
+            } else {
+                val idUser = userUseCase.getUserId()
+                characterUseCase.saveCharacter(
+                    idUser, name, description, url, marvelDc,
+                    heroiVilao, age.toInt(), birthday
+                )
+                state.value = ViewState.ShowCharacter
+            }
         }
     }
 
-    private fun save(characterString: String) {
-        val preferences = App.context
-            .getSharedPreferences("bd", AppCompatActivity.MODE_PRIVATE)
-        preferences.edit().putString("character", characterString).commit()
-    }
+
 }
 
 sealed class ViewState {

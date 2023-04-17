@@ -1,17 +1,18 @@
 package br.com.fundatec.myapplication.character.data
 
-import java.time.LocalDate
 
 
 data class Character(
+    val id: Int,
+    val apiId: Int,
     val name: String,
     val url: String,
     val description: String,
-    val marvelDc: universeType,
-    val heroiVilao: characterType,
+    val marvelDc: MarvelDC,
+    val heroiVilao: HeroVillain,
     val age: String,
-    val dateOfBirth: String,
-) {
-    enum class universeType { Marvel, DC }
-    enum class characterType { heroi, vilao}
-}
+    val dateOfBirth: String?,
+)
+    enum class MarvelDC { MARVEL, DC }
+    enum class HeroVillain { HERO, VILLAIN}
+

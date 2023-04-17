@@ -20,7 +20,7 @@
             android:exported="false"
             android:parentActivityName=".home.view.HomeActivity"/>
         <activity
-            android:name=".BottomNavigationActivity"
+            android:name=".navigation.BottomNavigationActivity"
             android:exported="false" />
         <activity
             android:name=".home.view.HomeActivity"

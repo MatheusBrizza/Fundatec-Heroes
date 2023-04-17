@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:navigationIcon="@drawable/icones"
-            app:title="Meus heróis">
+            app:title="My Heroes">
 
             <ImageButton
                 android:id="@+id/btn_home"
@@ -41,17 +41,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tl_home"
             tools:layout_editor_absoluteX="16dp" />
-
-
-        <!--
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_home"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    tools:listitem="@" />
-        -->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

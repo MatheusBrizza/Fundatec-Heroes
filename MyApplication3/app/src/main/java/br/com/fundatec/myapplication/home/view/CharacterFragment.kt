@@ -1,29 +1,24 @@
 package br.com.fundatec.myapplication.home.view
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import br.com.fundatec.myapplication.App
+import br.com.fundatec.myapplication.character.data.HeroVillain
+import br.com.fundatec.myapplication.character.data.response.CharacterResponse
 import br.com.fundatec.myapplication.databinding.FragmentCharacterBinding
-import br.com.fundatec.myapplication.character.data.Character
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import br.com.fundatec.myapplication.home.presentation.CharacterFragmentViewModel
+import br.com.fundatec.myapplication.home.presentation.ViewState
 
 
 class CharacterFragment : Fragment() {
 
     private lateinit var binding: FragmentCharacterBinding
-
-    private val moshi by lazy {
-        Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
+    private val adapter by lazy{
+        ListItemAdapter()
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,26 +29,34 @@ class CharacterFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val viewModel = CharacterFragmentViewModel()
         super.onViewCreated(view, savedInstanceState)
-        val adapter = ListItemAdapter()
         binding.list.adapter = adapter
-
-        val preferences = App.context.getSharedPreferences("bd", Context.MODE_PRIVATE)
-
-        val characterString = preferences.getString("character", "")
-        if (characterString.isNullOrBlank()) {
-            toastRecyclerVazio()
-        } else {
-            val characterFromPreferences: Character = moshi.adapter(Character::class.java)
-                .fromJson(characterString)!!
-            adapter.setItems(characterFromPreferences)
+        val bundle = arguments?.getString("heroType")
+        viewModel.populateRecyclerView(HeroVillain.valueOf(bundle.orEmpty()))
+        viewModel.viewState.observe(viewLifecycleOwner) { state ->
+            when(state) {
+                is ViewState.ShowCharacterList -> addItems(state.characterList)
+                is ViewState.ShowListEmpty -> recyclerVazio()
+            }
         }
     }
 
-    private fun toastRecyclerVazio() {
+    private fun addItems(characterList: List<CharacterResponse>){
+        adapter.setItems(characterList)
+    }
+
+    private fun recyclerVazio(){
         Toast.makeText(requireContext(), "Recycler está vazio.", Toast.LENGTH_LONG).show()
     }
+
     companion object {
-         fun newInstance() = CharacterFragment()
+         fun newInstance(hv: HeroVillain): Fragment{
+             return CharacterFragment().apply {
+                 val bundle = Bundle()
+                 bundle.putString("heroType", hv.name)
+                 arguments = bundle
+             }
+         }
     }
 }

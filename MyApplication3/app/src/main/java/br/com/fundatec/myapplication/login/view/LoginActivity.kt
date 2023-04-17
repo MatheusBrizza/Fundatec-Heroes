@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel.viewState.observe(this) { state ->
             when (state) {
-                is ViewState.ShowHome -> showHome()
+                is ViewState.ShowSucess -> ShowSucess()
                 is ViewState.ShowErrorFields -> showSnack(binding.root, "campos não devem estar vazios")
                 is ViewState.ShowErrorEmail -> showToast("email incorreto")
                 is ViewState.ShowErrorPassword -> showToast("senha incorreta")
@@ -44,9 +44,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun configLoginButton() {
         binding.btnLogin.setOnClickListener {
-            viewModel.validateUserInput(
+            viewModel.validateAndSaveUserInput(
                 email = binding.etEmail.text.toString(),
-                password = binding.etPassword.text.toString(),
+                password = binding.etPassword.text.toString()
             )
         }
     }
@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun showHome() {
+    private fun ShowSucess() {
         startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
     }
 

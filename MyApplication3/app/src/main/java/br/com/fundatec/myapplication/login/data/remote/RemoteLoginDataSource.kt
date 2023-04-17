@@ -6,7 +6,7 @@ import br.com.fundatec.myapplication.webservice.RetrofitNetworkClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class LoginDataSource {
+class RemoteLoginDataSource {
 
     private val service = RetrofitNetworkClient
         .createNetworkClient()
@@ -22,7 +22,7 @@ class LoginDataSource {
                     null
                 }
             } catch (ex: Exception) {
-                Log.e("LoginDataSource", ex.message ?: "")
+                Log.e("LoginDataSource", ex.message ?: "usuario não encontrado")
                 null
             }
         }

@@ -1,28 +1,29 @@
 package br.com.fundatec.myapplication.profile.data.local
 
-import android.util.Log
-import br.com.fundatec.myapplication.database.FHDatabase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import android.content.Context
+import br.com.fundatec.myapplication.App
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class LocalDatasource {
-    private val database: FHDatabase by lazy {
-        FHDatabase.getInstance()
+    private val moshi by lazy {
+        Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
     }
 
+    val preferences = App.context.getSharedPreferences("bd", Context.MODE_PRIVATE)
 
-    suspend fun save() {
-        return withContext(Dispatchers.IO) {
-            database.userDao().insertUser(
-                UserEntity(
-                    name = "Matheus",
-                    email = "matheus.brizola@gmail.com",
-                    password = "123456"
-                )
-            )
+    fun getUserId(): Int {
+        val userString = preferences.getString("user", "")
+        val characterFromPreferences: User = moshi.adapter(User::class.java)
+            .fromJson(userString)!!
+        return characterFromPreferences.id
+    }
 
-            Log.e("teste", "${database.userDao().getUser()}")
-        }
+    fun saveUser(user: User) {
+            val userString = moshi.adapter(User::class.java).toJson(user)
+            preferences.edit().putString("user", userString).commit()
     }
 
 }
