@@ -11,8 +11,10 @@ class CharacterLocalDatasource {
         FHDatabase.getInstance()
     }
 
-    suspend fun saveCharacter(apiId: Int, name: String, description: String, url: String,
-                     marvelDc: String, heroiVilao: String, age: Int, birthday: String?) {
+    suspend fun saveCharacter(
+        apiId: Int, name: String, description: String, url: String,
+        marvelDc: String, heroiVilao: String, age: Int, birthday: String?
+    ) {
         return withContext(Dispatchers.IO) {
             database.characterDao().insertCharacter(
                 CharacterEntity(

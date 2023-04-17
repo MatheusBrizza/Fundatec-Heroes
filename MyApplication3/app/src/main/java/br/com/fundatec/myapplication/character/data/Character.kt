@@ -1,7 +1,6 @@
 package br.com.fundatec.myapplication.character.data
 
 
-
 data class Character(
     val id: Int,
     val apiId: Int,
@@ -13,6 +12,7 @@ data class Character(
     val age: String,
     val dateOfBirth: String?,
 )
-    enum class MarvelDC { MARVEL, DC }
-    enum class HeroVillain { HERO, VILLAIN}
+
+enum class MarvelDC { MARVEL, DC }
+enum class HeroVillain { HERO, VILLAIN }
 

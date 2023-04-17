@@ -25,10 +25,10 @@ class ProfileActivity : AppCompatActivity() {
         viewModel.viewState.observe(this) { state ->
             when (state) {
                 is ViewState.ShowSuccess -> showSuccess()
-                is ViewState.ShowError -> showSnack(binding.root, "campos não devem estar vazios")
-                is ViewState.ShowErrorName -> showToast("nome não deve estar vazio")
-                is ViewState.ShowErrorEmail -> showToast("email no formato incorreto")
-                is ViewState.ShowErrorPassword -> showToast("senha no formato incorreto")
+                is ViewState.ShowError -> showError()
+                is ViewState.ShowErrorName -> showErrorName()
+                is ViewState.ShowErrorEmail -> showErrorEmail()
+                is ViewState.ShowErrorPassword -> showErrorPassword()
                 is ViewState.Loading -> OnLoading()
             }
         }
@@ -55,7 +55,27 @@ class ProfileActivity : AppCompatActivity() {
         binding.pbLoading.isVisible = true
     }
 
+    private fun showError() {
+        binding.pbLoading.isVisible = false
+        showSnack(binding.root, "campos não devem estar vazios")
+    }
+
+    private fun showErrorName() {
+        binding.pbLoading.isVisible = false
+        showToast("nome não deve estar vazio")
+    }
+
+    private fun showErrorEmail() {
+        binding.pbLoading.isVisible = false
+        showToast("email no formato incorreto")
+    }
+
+    private fun showErrorPassword() {
+        binding.pbLoading.isVisible = false
+        showToast("senha no formato incorreto")
+    }
+
     private fun returnLogin() {
-        startActivity(Intent(this@ProfileActivity,LoginActivity::class.java))
+        startActivity(Intent(this@ProfileActivity, LoginActivity::class.java))
     }
 }

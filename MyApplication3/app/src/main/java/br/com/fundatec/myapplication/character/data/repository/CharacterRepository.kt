@@ -9,10 +9,14 @@ class CharacterRepository {
         CharacterLocalDatasource()
     }
 
-    suspend fun saveCharacterDB(apiId: Int, name: String, url: String, description: String,
-                         marvelDc: String, heroiVilao: String, age: Int, birthday: String?) {
-        localDatasource.saveCharacter(apiId, name, url, description,
-            marvelDc, heroiVilao, age, birthday)
+    suspend fun saveCharacterDB(
+        apiId: Int, name: String, url: String, description: String,
+        marvelDc: String, heroiVilao: String, age: Int, birthday: String?
+    ) {
+        localDatasource.saveCharacter(
+            apiId, name, url, description,
+            marvelDc, heroiVilao, age, birthday
+        )
     }
 
 }

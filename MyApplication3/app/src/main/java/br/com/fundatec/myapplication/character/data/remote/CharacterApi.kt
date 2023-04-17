@@ -13,11 +13,11 @@ interface CharacterApi {
     @GET("api/character/{userId}")
     suspend fun getAllCharacters(
         @Path("userId") userId: Int,
-    ) : Response<List<CharacterResponse>>
+    ): Response<List<CharacterResponse>>
 
     @POST("api/character/{userId}")
     suspend fun saveCharacter(
         @Path("userId") userId: Int,
         @Body character: CharacterRequest
-    ) : Response<Int?>
+    ): Response<Int?>
 }

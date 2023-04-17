@@ -18,19 +18,18 @@
         <activity
             android:name=".character.view.NewCharacterActivity"
             android:exported="false"
-            android:parentActivityName=".home.view.HomeActivity"/>
+            android:parentActivityName=".home.view.HomeActivity" />
         <activity
             android:name=".navigation.BottomNavigationActivity"
             android:exported="false" />
         <activity
             android:name=".home.view.HomeActivity"
             android:exported="false"
-            android:parentActivityName=".login.view.LoginActivity">
-        </activity>
+            android:parentActivityName=".login.view.LoginActivity"></activity>
         <activity
             android:name=".profile.view.ProfileActivity"
             android:exported="false"
-            android:parentActivityName=".login.view.LoginActivity"/>
+            android:parentActivityName=".login.view.LoginActivity" />
         <activity
             android:name=".login.view.LoginActivity"
             android:exported="true">

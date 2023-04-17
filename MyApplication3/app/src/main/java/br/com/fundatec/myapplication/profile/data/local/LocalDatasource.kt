@@ -22,8 +22,8 @@ class LocalDatasource {
     }
 
     fun saveUser(user: User) {
-            val userString = moshi.adapter(User::class.java).toJson(user)
-            preferences.edit().putString("user", userString).commit()
+        val userString = moshi.adapter(User::class.java).toJson(user)
+        preferences.edit().putString("user", userString).commit()
     }
 
 }

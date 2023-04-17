@@ -1,6 +1,6 @@
 package br.com.fundatec.myapplication.profile.data.remote
 
-data class UserRequest (
+data class UserRequest(
     val name: String,
     val email: String,
     val password: String

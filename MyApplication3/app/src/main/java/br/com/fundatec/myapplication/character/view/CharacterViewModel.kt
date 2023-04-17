@@ -25,6 +25,7 @@ class CharacterViewModel : ViewModel() {
         marvelDc: String?, age: String?, birthday: String?
     ) {
         viewModelScope.launch {
+            state.value = ViewState.Loading
             if (name.isNullOrEmpty() || description.isNullOrEmpty() || url.isNullOrEmpty() ||
                 heroiVilao.isNullOrEmpty() || marvelDc.isNullOrEmpty() || age.isNullOrEmpty()
             ) {
@@ -46,4 +47,5 @@ class CharacterViewModel : ViewModel() {
 sealed class ViewState {
     object ShowCharacter : ViewState()
     object ShowError : ViewState()
+    object Loading : ViewState()
 }

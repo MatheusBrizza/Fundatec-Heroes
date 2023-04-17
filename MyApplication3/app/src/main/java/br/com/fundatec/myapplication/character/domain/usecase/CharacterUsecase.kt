@@ -15,7 +15,7 @@ class CharacterUsecase {
         RemoteCharacterDataSource()
     }
 
-    suspend fun listAll(id: Int): List<CharacterResponse>{
+    suspend fun listAll(id: Int): List<CharacterResponse> {
         return remoteCharacterDataSource.getListAll(id)
 
     }
@@ -24,8 +24,10 @@ class CharacterUsecase {
         userId: Int, name: String, url: String, description: String,
         marvelDc: String, heroiVilao: String, age: Int, birthday: String?
     ) {
-        remoteCharacterDataSource.saveCharacterApi(userId, name, url, description,
-            marvelDc, heroiVilao, age, birthday)
+        remoteCharacterDataSource.saveCharacterApi(
+            userId, name, url, description,
+            marvelDc, heroiVilao, age, birthday
+        )
 
     }
 }

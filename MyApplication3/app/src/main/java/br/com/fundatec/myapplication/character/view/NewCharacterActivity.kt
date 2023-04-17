@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import br.com.fundatec.components.showSnack
 import br.com.fundatec.myapplication.R
 import br.com.fundatec.myapplication.databinding.ActivityNewCharacterBinding
@@ -29,15 +30,16 @@ class NewCharacterActivity : AppCompatActivity(), OnItemSelectedListener {
         configSpinner(R.array.heroi_vilao, binding.spnHeroVilain)
         configSaveCharacterButton()
         viewModel.viewState.observe(this) { state ->
-            when(state) {
+            when (state) {
                 is ViewState.ShowCharacter -> saveCharacter()
-                is ViewState.ShowError -> showSnack(binding.root, "erro inesperado")
+                is ViewState.ShowError -> showError()
+                is ViewState.Loading -> loading()
             }
         }
 
     }
 
-    private fun configSpinner( list: Int, view: Spinner) {
+    private fun configSpinner(list: Int, view: Spinner) {
         binding.spnHeroVilain.onItemSelectedListener = this
         ArrayAdapter.createFromResource(
             this,
@@ -63,7 +65,17 @@ class NewCharacterActivity : AppCompatActivity(), OnItemSelectedListener {
         }
     }
 
+    private fun loading() {
+        binding.pbLoading.isVisible = true
+    }
+
+    private fun showError() {
+        binding.pbLoading.isVisible = false
+        showSnack(binding.root, "campos não podem estar vazios")
+    }
+
     private fun saveCharacter() {
+        binding.pbLoading.isVisible = false
         showSnack(binding.root, "personagem salvo")
         val intent = Intent(this@NewCharacterActivity, HomeActivity::class.java)
         startActivity(intent)

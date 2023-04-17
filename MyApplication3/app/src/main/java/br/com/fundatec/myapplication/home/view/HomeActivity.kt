@@ -19,7 +19,6 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         configTab()
         configHomeButton()
     }
@@ -32,8 +31,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun configHomeButton() {
         binding.btnHome.setOnClickListener {
-            val intent = Intent(this@HomeActivity, NewCharacterActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this@HomeActivity, NewCharacterActivity::class.java))
         }
     }
 }
@@ -48,13 +46,15 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         return when (position) {
             0 -> "Heroi"
             1 -> "Vilao"
-            else -> {null}
+            else -> {
+                null
+            }
         }
     }
 
     override fun getItem(position: Int): Fragment {
         Log.e("CharacterDataSource", "posição: " + "${position}")
-        val characterType = when(position) {
+        val characterType = when (position) {
             0 -> HeroVillain.HERO
             else -> HeroVillain.VILLAIN
         }

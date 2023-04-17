@@ -10,6 +10,6 @@ interface LoginApi {
     @GET("api/login")
     suspend fun login(
         @Query("email") email: String,
-        @Query("password") password:String,
+        @Query("password") password: String,
     ): Response<LoginResponse?>
 }

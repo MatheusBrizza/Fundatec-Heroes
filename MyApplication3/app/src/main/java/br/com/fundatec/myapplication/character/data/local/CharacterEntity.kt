@@ -16,7 +16,7 @@ data class CharacterEntity(
     val characterType: heroVillain,
     val age: Int,
     val birthday: String?
-){
+) {
     enum class marvelDC { MARVEL, DC }
-    enum class heroVillain { HERO, VILLAIN}
+    enum class heroVillain { HERO, VILLAIN }
 }

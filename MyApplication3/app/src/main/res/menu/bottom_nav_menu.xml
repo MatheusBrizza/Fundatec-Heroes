@@ -4,31 +4,31 @@
     <item
         android:id="@+id/navigation_back"
         android:icon="@drawable/arrow_left_svgrepo_com_1_"
-        android:title="Back"/>
+        android:title="Back" />
 
     <item
         android:id="@+id/navigation_notification"
         android:icon="@drawable/round_bell_svgrepo_com"
-        android:title="Notificação"/>
+        android:title="Notificação" />
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/white_home_svgrepo_com"
-        android:title="Home"/>
+        android:title="Home" />
 
     <item
         android:id="@+id/navigation_stats"
         android:icon="@drawable/grade_center_svgrepo_com"
-        android:title="Stats"/>
+        android:title="Stats" />
 
     <item
         android:id="@+id/navigation_search"
         android:icon="@drawable/search_svgrepo_com_2_"
-        android:title="Search"/>
+        android:title="Search" />
 
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/student_management_avatar_people_svgrepo_com"
-        android:title="Profile"/>
+        android:title="Profile" />
 
 </menu>

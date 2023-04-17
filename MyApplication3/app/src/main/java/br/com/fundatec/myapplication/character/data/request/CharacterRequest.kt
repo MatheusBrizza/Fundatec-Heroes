@@ -1,7 +1,7 @@
 package br.com.fundatec.myapplication.character.data.request
 
 
-data class CharacterRequest (
+data class CharacterRequest(
     val name: String,
     val description: String,
     val image: String,

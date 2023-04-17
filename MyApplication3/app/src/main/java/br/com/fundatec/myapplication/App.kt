@@ -5,7 +5,7 @@ import android.content.Context
 
 class App : Application() {
 
-    companion object{
+    companion object {
         private lateinit var instance: App
         val context: Context
             get() = instance

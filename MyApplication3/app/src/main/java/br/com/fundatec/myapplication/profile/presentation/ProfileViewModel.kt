@@ -41,5 +41,5 @@ sealed class ViewState {
     object ShowErrorName : ViewState()
     object ShowErrorEmail : ViewState()
     object ShowErrorPassword : ViewState()
-    object Loading: ViewState()
+    object Loading : ViewState()
 }

@@ -18,6 +18,7 @@ class LoginViewModel : ViewModel() {
 
     fun validateAndSaveUserInput(email: String?, password: String?) {
         viewModelScope.launch {
+            state.value = ViewState.Loading
             if (email.isNullOrEmpty() && password.isNullOrEmpty()) {
                 state.value = ViewState.ShowErrorFields
             } else if (email?.let { EmailValidator.isEmailValid(email) } == false) {
@@ -26,7 +27,7 @@ class LoginViewModel : ViewModel() {
                 state.value = ViewState.ShowErrorPassword
             } else {
                 usecase.saveUserLocalAfterLogin(email!!, password)
-                state.value = ViewState.ShowSucess
+                state.value = ViewState.ShowSuccess
             }
         }
     }
@@ -34,8 +35,9 @@ class LoginViewModel : ViewModel() {
 }
 
 sealed class ViewState {
-    object ShowSucess : ViewState()
+    object ShowSuccess : ViewState()
     object ShowErrorFields : ViewState()
     object ShowErrorEmail : ViewState()
     object ShowErrorPassword : ViewState()
+    object Loading : ViewState()
 }

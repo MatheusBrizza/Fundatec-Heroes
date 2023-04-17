@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import br.com.fundatec.components.showSnack
 import br.com.fundatec.components.showToast
 import br.com.fundatec.myapplication.home.view.HomeActivity
@@ -32,10 +33,11 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel.viewState.observe(this) { state ->
             when (state) {
-                is ViewState.ShowSucess -> ShowSucess()
-                is ViewState.ShowErrorFields -> showSnack(binding.root, "campos não devem estar vazios")
-                is ViewState.ShowErrorEmail -> showToast("email incorreto")
-                is ViewState.ShowErrorPassword -> showToast("senha incorreta")
+                is ViewState.ShowSuccess -> ShowSucess()
+                is ViewState.ShowErrorFields -> showErrorFields()
+                is ViewState.ShowErrorEmail -> showErrorEmail()
+                is ViewState.ShowErrorPassword -> showErrorPassword()
+                is ViewState.Loading -> loading()
             }
         }
         configLoginButton()
@@ -53,15 +55,35 @@ class LoginActivity : AppCompatActivity() {
 
     private fun configProfileButton() {
         binding.tvNovoUsuario.setOnClickListener {
-            showProfile()
+            goToProfile()
         }
     }
 
+    private fun loading() {
+        binding.pbLoading.isVisible = true
+    }
+
+    private fun showErrorFields() {
+        binding.pbLoading.isVisible = false
+        showSnack(binding.root,"campos não devem estar vazios")
+    }
+
+    private fun showErrorEmail() {
+        binding.pbLoading.isVisible = false
+        showToast("email incorreto")
+    }
+
+    private fun showErrorPassword() {
+        binding.pbLoading.isVisible = false
+        showToast("senha incorreta")
+    }
+
     private fun ShowSucess() {
+        binding.pbLoading.isVisible = false
         startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
     }
 
-    private fun showProfile() {
+    private fun goToProfile() {
         startActivity(Intent(this@LoginActivity, ProfileActivity::class.java))
     }
 }
