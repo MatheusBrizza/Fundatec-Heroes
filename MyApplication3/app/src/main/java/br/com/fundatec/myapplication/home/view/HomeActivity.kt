@@ -10,6 +10,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import br.com.fundatec.myapplication.character.data.HeroVillain
 import br.com.fundatec.myapplication.character.view.NewCharacterActivity
 import br.com.fundatec.myapplication.databinding.ActivityHomeBinding
+import br.com.fundatec.myapplication.login.view.LoginActivity
+import br.com.fundatec.myapplication.profile.view.ProfileActivity
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
@@ -19,6 +21,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        configActionBar()
         configTab()
         configHomeButton()
     }
@@ -30,10 +33,19 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun configHomeButton() {
-        binding.btnHome.setOnClickListener {
+        binding.btnNewCharacterPage.setOnClickListener {
             startActivity(Intent(this@HomeActivity, NewCharacterActivity::class.java))
         }
     }
+
+    private fun configActionBar() {
+        setSupportActionBar(binding.tbNavigation)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.tbNavigation.setOnClickListener {
+            startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
+        }
+    }
+
 }
 
 class ViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {

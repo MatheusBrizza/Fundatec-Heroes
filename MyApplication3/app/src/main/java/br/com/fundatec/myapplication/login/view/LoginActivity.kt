@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun configProfileButton() {
-        binding.tvNovoUsuario.setOnClickListener {
+        binding.btnNovoUsuario.setOnClickListener {
             goToProfile()
         }
     }

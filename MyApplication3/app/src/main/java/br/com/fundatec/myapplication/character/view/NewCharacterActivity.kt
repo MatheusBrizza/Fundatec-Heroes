@@ -14,6 +14,7 @@ import br.com.fundatec.components.showSnack
 import br.com.fundatec.myapplication.R
 import br.com.fundatec.myapplication.databinding.ActivityNewCharacterBinding
 import br.com.fundatec.myapplication.home.view.HomeActivity
+import br.com.fundatec.myapplication.profile.view.ProfileActivity
 
 
 class NewCharacterActivity : AppCompatActivity(), OnItemSelectedListener {
@@ -48,6 +49,14 @@ class NewCharacterActivity : AppCompatActivity(), OnItemSelectedListener {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             view.adapter = adapter
+        }
+    }
+
+    private fun configActionBar() {
+        setSupportActionBar(binding.tbNavigation)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.tbNavigation.setOnClickListener {
+            startActivity(Intent(this@NewCharacterActivity, HomeActivity::class.java))
         }
     }
 

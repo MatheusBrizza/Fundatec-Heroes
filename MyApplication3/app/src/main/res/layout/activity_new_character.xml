@@ -21,88 +21,120 @@
             android:id="@+id/tiet_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tb_navigation"
-            android:hint="@string/name"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="4dp"
             android:background="@color/bright_brown"
+            android:hint="@string/name"
+            android:paddingVertical="8dp"
             android:textAlignment="center"
-            android:layout_marginVertical="15dp"
-            android:layout_marginHorizontal="15dp"
-            />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/tiet_url"
+            app:layout_constraintVertical_chainStyle="packed"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tiet_name"
-            android:hint="@string/image_url"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="4dp"
             android:background="@color/bright_brown"
+            android:hint="@string/image_url"
+            android:paddingVertical="8dp"
             android:textAlignment="center"
-            android:layout_marginVertical="15dp"
-            android:layout_marginHorizontal="15dp"/>
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tiet_name"
+            app:layout_constraintBottom_toTopOf="@id/tiet_description"
+            />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tiet_url"
-            android:hint="@string/description"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="4dp"
             android:background="@color/bright_brown"
+            android:hint="@string/description"
+            android:paddingVertical="8dp"
             android:textAlignment="center"
-            android:layout_marginVertical="15dp"
-            android:layout_marginHorizontal="15dp"/>
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/tiet_url"
+            app:layout_constraintBottom_toTopOf="@id/tiet_age"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_age"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tiet_description"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tiet_date"
-            android:hint="@string/age"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="4dp"
             android:background="@color/bright_brown"
+            android:hint="@string/age"
+            android:paddingVertical="8dp"
             android:textAlignment="center"
-            android:layout_marginVertical="15dp"
-            android:layout_marginHorizontal="15dp"/>
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/tiet_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tiet_description"
+            app:layout_constraintBottom_toTopOf="@id/spn_marvel_dc"/>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiet_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tiet_description"
-            app:layout_constraintStart_toEndOf="@+id/tiet_age"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:hint="@string/date_of_birth"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="4dp"
             android:background="@color/bright_brown"
+            android:hint="@string/date_of_birth"
+            android:paddingVertical="8dp"
             android:textAlignment="center"
-            android:layout_marginVertical="15dp"
-            android:layout_marginHorizontal="15dp"/>
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tiet_age"
+            app:layout_constraintTop_toTopOf="@id/tiet_age"
+            app:layout_constraintBottom_toBottomOf="@id/tiet_age"/>
 
         <Spinner
             android:id="@+id/spn_marvel_dc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/tiet_age"
-            android:spinnerMode="dialog"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="4dp"
             android:background="@color/silver"
-            android:layout_marginVertical="15dp"
-            android:layout_marginHorizontal="15dp"/>
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:paddingVertical="8dp"
+            android:spinnerMode="dialog"
+            app:layout_constraintTop_toBottomOf="@+id/tiet_age"
+            app:layout_constraintBottom_toTopOf="@id/spn_hero_vilain"/>
 
         <Spinner
             android:id="@+id/spn_hero_vilain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/spn_marvel_dc"
-            android:spinnerMode="dialog"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="4dp"
             android:background="@color/silver"
-            android:layout_marginVertical="15dp"
-            android:layout_marginHorizontal="15dp"/>
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:paddingVertical="8dp"
+            android:spinnerMode="dialog"
+            app:layout_constraintTop_toBottomOf="@+id/spn_marvel_dc"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <Button
             android:id="@+id/btn_save_character"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="confirm" />
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            android:paddingVertical="8dp"
+            android:text="@string/button_confirm"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <ProgressBar
             android:id="@+id/pb_loading"
@@ -110,9 +142,9 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

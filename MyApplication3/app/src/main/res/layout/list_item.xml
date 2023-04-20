@@ -18,7 +18,7 @@
 
 
             <ImageView
-                android:id="@+id/tv_url"
+                android:id="@+id/iv_url"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal|center_vertical"

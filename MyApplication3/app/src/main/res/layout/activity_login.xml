@@ -10,6 +10,18 @@
         android:paddingHorizontal="16dp"
         tools:context=".login.view.LoginActivity">
 
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/abuse"
+            app:layout_constraintBottom_toTopOf="@+id/til_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_email"
             android:layout_width="0dp"
@@ -62,12 +74,12 @@
             app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
 
-        <TextView
-            android:id="@+id/tv_novo_usuario"
+        <Button
+            android:id="@+id/btn_novo_usuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="@string/novo_usuario"
+            android:text="@string/new_user"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent" />
 

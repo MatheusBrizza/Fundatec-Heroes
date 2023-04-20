@@ -45,6 +45,14 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
+    private fun configActionBar() {
+        setSupportActionBar(binding.tbNavigation)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.tbNavigation.setOnClickListener {
+            startActivity(Intent(this@ProfileActivity, LoginActivity::class.java))
+        }
+    }
+
     private fun showSuccess() {
         binding.pbLoading.isVisible = false
         showSnack(binding.root, "usuario cadastrado com sucesso")
