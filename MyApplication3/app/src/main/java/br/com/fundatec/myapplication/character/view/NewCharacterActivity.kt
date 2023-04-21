@@ -86,8 +86,7 @@ class NewCharacterActivity : AppCompatActivity(), OnItemSelectedListener {
     private fun saveCharacter() {
         binding.pbLoading.isVisible = false
         showSnack(binding.root, "personagem salvo")
-        val intent = Intent(this@NewCharacterActivity, HomeActivity::class.java)
-        startActivity(intent)
+        finish()
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

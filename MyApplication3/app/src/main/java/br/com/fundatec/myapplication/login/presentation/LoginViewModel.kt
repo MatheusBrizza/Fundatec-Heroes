@@ -31,7 +31,6 @@ class LoginViewModel : ViewModel() {
             }
         }
     }
-
 }
 
 sealed class ViewState {

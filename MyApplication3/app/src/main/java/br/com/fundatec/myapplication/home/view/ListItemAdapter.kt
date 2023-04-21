@@ -1,6 +1,5 @@
 package br.com.fundatec.myapplication.home.view
 
-import android.R.attr.data
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -32,6 +31,7 @@ class ListItemAdapter : RecyclerView.Adapter<ListItemViewHolder>() {
 
 
     fun setItems(characters: List<CharacterResponse>) {
+        list.clear()
         list.addAll(characters)
         notifyDataSetChanged()
     }

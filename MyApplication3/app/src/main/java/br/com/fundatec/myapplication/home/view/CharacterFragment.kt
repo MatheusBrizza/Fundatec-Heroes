@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import br.com.fundatec.myapplication.character.data.HeroVillain
 import br.com.fundatec.myapplication.character.data.response.CharacterResponse
 import br.com.fundatec.myapplication.databinding.FragmentCharacterBinding
@@ -20,6 +21,9 @@ class CharacterFragment : Fragment() {
     private val adapter by lazy {
         ListItemAdapter()
     }
+    private val viewModel by lazy {
+        ViewModelProvider(requireActivity()).get(CharacterFragmentViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,11 +35,9 @@ class CharacterFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val viewModel = CharacterFragmentViewModel()
+
         super.onViewCreated(view, savedInstanceState)
         binding.list.adapter = adapter
-        val bundle = arguments?.getString("heroType")
-        viewModel.populateRecyclerView(HeroVillain.valueOf(bundle.orEmpty()))
         viewModel.viewState.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is ViewState.ShowCharacterList -> addItems(state.characterList)
@@ -43,6 +45,16 @@ class CharacterFragment : Fragment() {
                 is ViewState.Loading -> loading()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        init()
+    }
+
+    private fun init() {
+        val bundle = arguments?.getString("heroType")
+        viewModel.populateRecyclerView(HeroVillain.valueOf(bundle.orEmpty()))
     }
 
     private fun loading() {

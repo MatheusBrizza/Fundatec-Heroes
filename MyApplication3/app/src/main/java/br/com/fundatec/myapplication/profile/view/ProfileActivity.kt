@@ -55,7 +55,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun showSuccess() {
         binding.pbLoading.isVisible = false
-        showSnack(binding.root, "usuario cadastrado com sucesso")
+        showSnack(binding.root, "Usuario cadastrado com sucesso")
         returnLogin()
     }
 
@@ -65,25 +65,25 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun showError() {
         binding.pbLoading.isVisible = false
-        showSnack(binding.root, "campos não devem estar vazios")
+        showSnack(binding.root, "Campos não devem estar vazios")
     }
 
     private fun showErrorName() {
         binding.pbLoading.isVisible = false
-        showToast("nome não deve estar vazio")
+        showToast("Nome não deve estar vazio")
     }
 
     private fun showErrorEmail() {
         binding.pbLoading.isVisible = false
-        showToast("email no formato incorreto")
+        showToast("Email no formato incorreto")
     }
 
     private fun showErrorPassword() {
         binding.pbLoading.isVisible = false
-        showToast("senha no formato incorreto")
+        showToast("Senha no formato incorreto")
     }
 
     private fun returnLogin() {
-        startActivity(Intent(this@ProfileActivity, LoginActivity::class.java))
+        finish()
     }
 }

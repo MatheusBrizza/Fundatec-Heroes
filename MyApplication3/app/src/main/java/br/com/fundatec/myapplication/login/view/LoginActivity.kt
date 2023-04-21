@@ -65,17 +65,17 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showErrorFields() {
         binding.pbLoading.isVisible = false
-        showSnack(binding.root,"campos não devem estar vazios")
+        showSnack(binding.root,"Campos não devem estar vazios")
     }
 
     private fun showErrorEmail() {
         binding.pbLoading.isVisible = false
-        showToast("email incorreto")
+        showToast("Email incorreto")
     }
 
     private fun showErrorPassword() {
         binding.pbLoading.isVisible = false
-        showToast("senha incorreta")
+        showToast("Senha incorreta")
     }
 
     private fun ShowSucess() {

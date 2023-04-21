@@ -31,8 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:layout_marginStart="25dp"
-            android:text="@string/nome_anime"
+            android:layout_marginStart="20dp"
+            android:text="@string/new_character"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cv_character" />
     </androidx.constraintlayout.widget.ConstraintLayout>

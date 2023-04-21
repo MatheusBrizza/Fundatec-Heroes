@@ -41,9 +41,6 @@ class HomeActivity : AppCompatActivity() {
     private fun configActionBar() {
         setSupportActionBar(binding.tbNavigation)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.tbNavigation.setOnClickListener {
-            startActivity(Intent(this@HomeActivity, LoginActivity::class.java))
-        }
     }
 
 }
